@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RPS Battle Arena</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>RPS Battle Arena</h1>
+
+  <div class="controls">
+    <label for="match-select">Match Length:</label>
+    <select id="match-select" onchange="updateMatchLength(this.value)">
+      <option value="3">Best of 3</option>
+      <option value="5" selected>Best of 5</option>
+      <option value="10">Best of 10</option>
+    </select>
+
+    <button id="voice-toggle" onclick="toggleVoice()">🔊 Voice On</button>
+  </div>
+
+  <div class="arena">
+    <img id="bot-avatar" src="images/bot-neutral.png" alt="Bot Face" class="bot-face" />
+
+    <div class="hands">
+      <div id="player-hand">❔</div>
+      <span>VS</span>
+      <div id="bot-hand">❔</div>
+    </div>
+
+    <div class="choices">
+      <button onclick="play('rock')">✊</button>
+      <button onclick="play('paper')">✋</button>
+      <button onclick="play('scissors')">✌️</button>
+    </div>
+
+    <div class="scores">
+      <div class="score-block">
+        <span>Player</span>
+        <div class="bar-container"><div id="player-bar" class="bar"></div></div>
+        <div id="player-score">0</div>
+      </div>
+      <div class="score-block">
+        <span>Bot</span>
+        <div class="bar-container"><div id="bot-bar" class="bar"></div></div>
+        <div id="bot-score">0</div>
+      </div>
+    </div>
+
+    <div id="result" class="result">Make your move!</div>
+  </div>
+
+  <div id="popup" class="popup hidden">
+    <div class="popup-box">
+      <h2 id="popup-result"></h2>
+      <p id="popup-message"></p>
+      <button onclick="restartGame()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
